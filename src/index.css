@@ -1,0 +1,120 @@
+/* General Styles */
+:root {
+    --sidebar-width-expanded: 250px;
+    --sidebar-width-collapsed: 60px;
+    --navbar-height: 60px;
+    --primary-color: #0d6efd;
+    --dark-bg: #212529;
+}
+
+body {
+    margin: 0;
+    font-family:
+        -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+        "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+        sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    height: 100vh;
+    transition: width 0.3s ease;
+}
+
+.sidebar.expanded {
+    width: var(--sidebar-width-expanded);
+}
+
+.sidebar.collapsed {
+    width: var(--sidebar-width-collapsed);
+}
+
+.sidebar .nav-item {
+    margin: 5px 0;
+}
+
+.sidebar .nav-link {
+    color: rgba(255, 255, 255, 0.75);
+    transition: all 0.2s ease;
+}
+
+.sidebar .nav-link:hover {
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.sidebar .nav-link.active {
+    color: #ffffff;
+    background-color: var(--primary-color);
+}
+
+/* Navbar Styles */
+.navbar-user-dropdown .dropdown-toggle::after {
+    display: none;
+}
+
+/* Content Wrapper */
+.content-wrapper {
+    min-height: 100vh;
+    background-color: #f8f9fa;
+    transition: margin-left 0.3s ease;
+}
+
+/* Dashboard Cards */
+.dashboard-card {
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Product Cards */
+.product-card {
+    transition: transform 0.2s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+}
+
+.product-img-container {
+    height: 200px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.product-img {
+    object-fit: contain;
+    max-height: 100%;
+    max-width: 100%;
+    padding: 1rem;
+}
+
+/* Text Utilities */
+.text-truncate-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.hover-scale:hover {
+    transform: scale(1.05);
+}
+
+.hover-shadow:hover {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.08) !important;
+}

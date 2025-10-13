@@ -1,0 +1,121 @@
+/* Sidebar styles */
+.sidebar {
+    background-color: #212529;
+    color: #f8f9fa;
+    transition: all 0.3s ease;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.sidebar.expanded {
+    width: 250px;
+}
+
+.sidebar.collapsed {
+    width: 60px;
+}
+
+.sidebar-header {
+    height: 60px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.toggle-btn {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #f8f9fa;
+    transition: all 0.3s;
+}
+
+.toggle-btn:hover,
+.toggle-btn:focus {
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+.sidebar-content {
+    padding: 0px;
+}
+
+.sidebar-nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-footer {
+    padding: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Custom scrollbar for the sidebar */
+.sidebar::-webkit-scrollbar {
+    width: 5px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+    background: #212529;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Adjustments for collapsed state */
+.sidebar.collapsed .sidebar-item-label,
+.sidebar.collapsed .sidebar-arrow,
+.sidebar.collapsed .badge {
+    display: none;
+}
+
+.sidebar.collapsed .sidebar-link {
+    justify-content: center;
+    padding: 12px 0;
+}
+
+.sidebar.collapsed .sidebar-item-icon {
+    margin-right: 0;
+}
+
+/* Overrides for dark theme */
+.sidebar .sidebar-link {
+    color: #666;
+}
+
+.sidebar .sidebar-link:hover {
+    color: #999;
+    background-color: #f9f6f2;
+}
+
+.sidebar .sidebar-link.active {
+    color: #eb3349;
+    /*background-color: #f9f6f2;*/
+}
+
+.sidebar .sidebar-sub-link {
+    color: #666;
+}
+
+.sidebar .sidebar-sub-link:hover {
+    color: #999;
+    background-color: #f9f6f2;
+}
+
+.sidebar .sidebar-sub-link.active {
+    color: #eb3349;
+    background-color: #f9f6f2;
+}
+
+.sidebar .sidebar-link-with-children.active {
+    background-color: #f9f6f2;
+    color: #eb3349;
+}
