@@ -75,7 +75,7 @@ const Dashboard: React.FC = () => {
                     <h3 className="mb-0 fw-bold">{item.value}</h3>
                   </div>
                 </div>
-                {/* Placeholder for mini chart or progress bar */}
+
                 <div>
                   <div className="progress" style={{ height: "5px" }}>
                     <div
@@ -153,7 +153,6 @@ const Dashboard: React.FC = () => {
                   </Card.Text>
                 </Card.Body>
 
-                {/* Footer */}
                 <Card.Footer className="bg-white border-0">
                   <Button
                     variant="danger"
