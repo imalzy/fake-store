@@ -4,6 +4,7 @@ import Login from "../pages/Login";
 import Dashboard from "../pages/Dashboard";
 import UserPage from "../pages/UserPage";
 import NotFound from "../pages/NotFound";
+import ProductPage from "@/pages/ProductPage";
 
 const AppRoutes = () => {
   return (
@@ -22,7 +23,7 @@ const AppRoutes = () => {
       >
         {/* Add all protected routes as children here */}
         <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/products" element={<Dashboard />} /> {/* Placeholder */}
+        <Route path="/products" element={<ProductPage />} /> {/* Placeholder */}
         <Route path="/categories" element={<Dashboard />} /> {/* Placeholder */}
         <Route path="/orders" element={<Dashboard />} /> {/* Placeholder */}
         <Route path="/users" element={<UserPage />} />
