@@ -118,3 +118,31 @@ body {
 .hover-shadow:hover {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.08) !important;
 }
+
+.cartIconWrapper {
+  position: relative;
+  cursor: pointer;
+}
+
+.cartIcon {
+  font-size: 1.8rem;
+  transition: transform 0.2s ease-in-out;
+}
+
+.cartIcon:hover {
+  transform: scale(1.1);
+}
+
+.badge {
+  position: absolute;
+  top: -6px;
+  right: -10px;
+  background-color: #f43f5e;
+  color: white;
+  border-radius: 50%;
+  padding: 3px 7px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  min-width: 18px;
+  text-align: center;
+}

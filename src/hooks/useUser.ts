@@ -1,6 +1,6 @@
 import { useCallback, useContext } from "react";
 import { useLocalStorage } from "./useLocalStorage";
-import { AuthContext } from "@/context/authContext";
+import { AuthContext } from "@/context/AuthContext";
 
 export interface UserLogin {
   id?: string;
