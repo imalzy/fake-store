@@ -14,9 +14,8 @@ import {
 } from "react-icons/fa";
 import LinksGroup from "./LinksGroup";
 import "./sidebar.css";
-import { logout } from "../../../utils/auth";
-import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "@/hooks/useAuth";
 
 interface SidebarProps {
   expanded: boolean;
@@ -27,10 +26,10 @@ const Sidebar = ({ expanded, toggleSidebar }: SidebarProps) => {
   const location = useLocation();
   const navigate = useNavigate();
   const [activeItem, setActiveItem] = useState(location.pathname);
+  const { logout } = useAuth();
 
   const handleLogout = () => {
     logout();
-    toast.success("Logged out successfully");
     navigate("/login");
   };
 

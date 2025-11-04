@@ -1,8 +1,7 @@
 import { Navbar as BootstrapNavbar, Nav, Dropdown } from "react-bootstrap";
 import { FaSignOutAlt, FaCog } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
-import { logout, getUser } from "../../utils/auth";
+import { useAuth } from "@/hooks/useAuth";
 
 interface NavbarProps {
   expanded: boolean;
@@ -10,11 +9,10 @@ interface NavbarProps {
 
 const Navbar = ({ expanded }: NavbarProps) => {
   const navigate = useNavigate();
-  const user = getUser();
+  const { user, logout } = useAuth();
 
   const handleLogout = () => {
     logout();
-    toast.success("Logged out successfully");
     navigate("/login");
   };
 
@@ -46,7 +44,7 @@ const Navbar = ({ expanded }: NavbarProps) => {
             >
               {/* Avatar image */}
               <img
-                src={user?.avatar || "https://placehold.co/40x40?text=U"}
+                src={`https://placehold.co/40x40?text=${user?.username?.split("")[0].toUpperCase()}`}
                 alt="User Avatar"
                 className="rounded-circle"
                 style={{ width: "32px", height: "32px", objectFit: "cover" }}
