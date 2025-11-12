@@ -7,7 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 import AppRoutes from "./routes/AppRoutes";
 
 import { AuthProvider } from "./Providers/AuthProvider";
-import { CartProvider } from "./Providers/CardProvider";
+import { CartProvider } from "./Providers/CartProvider";
 
 interface CloseButtonProps {
   closeToast: () => void;

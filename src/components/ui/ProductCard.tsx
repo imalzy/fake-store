@@ -2,7 +2,6 @@ import React from "react";
 import { Card } from "react-bootstrap";
 import { BsBagPlus, BsStarFill, BsStarHalf, BsStar } from "react-icons/bs";
 import "./ProductCard.css";
-import { useCart } from "@/context/CartContext";
 
 export interface Rating {
   rate: number;
@@ -10,10 +9,10 @@ export interface Rating {
 }
 
 export interface Product {
-  id: number;
+  id?: number;
   title: string;
   price: number;
-  description: string;
+  description?: string;
   category: string;
   image: string;
   rating: Rating;
