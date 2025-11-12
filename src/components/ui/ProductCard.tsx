@@ -9,16 +9,18 @@ export interface Rating {
 }
 
 export interface Product {
-  id: number;
+  id?: number;
   title: string;
   price: number;
-  description: string;
+  description?: string;
   category: string;
   image: string;
   rating: Rating;
 }
 
-type ProductCardProps = Product
+type ProductCardProps = Product & {
+  addcart: () => void;
+};
 
 const ProductCard: React.FC<ProductCardProps> = ({
   id,
@@ -28,6 +30,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
   category,
   image,
   rating,
+  addcart,
 }) => {
   const renderStars = (rate: number) => {
     const stars = [];
@@ -44,7 +47,12 @@ const ProductCard: React.FC<ProductCardProps> = ({
   return (
     <Card className="product-card fixed-card">
       <a href="#" className="text-decoration-none text-dark">
-        <Card.Img variant="top" src={image} alt={title} className="product-img" />
+        <Card.Img
+          variant="top"
+          src={image}
+          alt={title}
+          className="product-img"
+        />
         <Card.Body className="px-3 py-2">
           <span className="text-muted text-uppercase small">{category}</span>
           <Card.Title className="fw-bold text-capitalize text-truncate mt-1 fs-6">
@@ -59,7 +67,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
           </div>
 
           <div className="mt-2 d-flex justify-content-end">
-            <BsBagPlus size={18} />
+            <BsBagPlus size={18} onClick={()=>addcart()} />
           </div>
         </Card.Body>
       </a>

@@ -1,7 +1,8 @@
 import { Navbar as BootstrapNavbar, Nav, Dropdown } from "react-bootstrap";
-import { FaSignOutAlt, FaCog } from "react-icons/fa";
+import { FaSignOutAlt, FaCog, FaShoppingCart } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
+import { useCart } from "@/context/CartContext";
 
 interface NavbarProps {
   expanded: boolean;
@@ -10,6 +11,9 @@ interface NavbarProps {
 const Navbar = ({ expanded }: NavbarProps) => {
   const navigate = useNavigate();
   const { user, logout } = useAuth();
+  const { cart } = useCart();
+
+  const cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
 
   const handleLogout = () => {
     logout();
@@ -35,6 +39,11 @@ const Navbar = ({ expanded }: NavbarProps) => {
       <BootstrapNavbar.Toggle aria-controls="navbar-nav" />
       <BootstrapNavbar.Collapse id="navbar-nav" className="justify-content-end">
         <Nav>
+          <div className="cartIconWrapper">
+            <FaShoppingCart className="cartIcon" />
+            {cartCount > 0 && <span className="badge" style={{color: 'red'}}>{cartCount}</span>}
+          </div>
+
           <Dropdown align="end">
             <Dropdown.Toggle
               as={Nav.Link}
@@ -44,7 +53,9 @@ const Navbar = ({ expanded }: NavbarProps) => {
             >
               {/* Avatar image */}
               <img
-                src={`https://placehold.co/40x40?text=${user?.username?.split("")[0].toUpperCase()}`}
+                src={`https://placehold.co/40x40?text=${user?.username
+                  ?.split("")[0]
+                  .toUpperCase()}`}
                 alt="User Avatar"
                 className="rounded-circle"
                 style={{ width: "32px", height: "32px", objectFit: "cover" }}

@@ -1,5 +1,7 @@
 import type { Product } from "@/components/ui/ProductCard";
 import ProductCard from "@/components/ui/ProductCard";
+import { useCart } from "@/context/CartContext";
+import { useUser } from "@/hooks/useUser";
 import React, { useEffect, useState } from "react";
 import { Container, Row, Col, Spinner, Button } from "react-bootstrap";
 import { FaUserPlus } from "react-icons/fa";
@@ -7,6 +9,9 @@ import { FaUserPlus } from "react-icons/fa";
 const ProductPage: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
+  const { addToCart } = useCart();
+  const { user } = useUser();
+
 
   useEffect(() => {
     fetch("https://fakestoreapi.com/products")
@@ -46,7 +51,13 @@ const ProductPage: React.FC = () => {
       <Row className="justify-content-center g-4">
         {products.map((product) => (
           <Col xs="auto">
-            <ProductCard {...product} />
+            <ProductCard
+              {...product}
+              key={product.id}
+              addcart={() => {
+                addToCart(product, user?.id || "");
+              }}
+            />
           </Col>
         ))}
       </Row>

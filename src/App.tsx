@@ -7,6 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 import AppRoutes from "./routes/AppRoutes";
 
 import { AuthProvider } from "./Providers/AuthProvider";
+import { CartProvider } from "./Providers/CartProvider";
 
 interface CloseButtonProps {
   closeToast: () => void;
@@ -20,16 +21,18 @@ function App() {
   return (
     <Router>
       <AuthProvider>
-        <div className="app-container">
-          <AppRoutes />
+        <CartProvider>
+          <div className="app-container">
+            <AppRoutes />
 
-          <ToastContainer
-            position="top-right"
-            autoClose={5000}
-            hideProgressBar
-            closeButton={<CloseButton closeToast={() => {}} />}
-          />
-        </div>
+            <ToastContainer
+              position="top-right"
+              autoClose={5000}
+              hideProgressBar
+              closeButton={<CloseButton closeToast={() => {}} />}
+            />
+          </div>
+        </CartProvider>
       </AuthProvider>
     </Router>
   );
