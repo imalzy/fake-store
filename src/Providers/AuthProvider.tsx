@@ -1,4 +1,4 @@
-import { AuthContext } from "@/context/AuthContext";
+import { AuthContext } from "@/context/authContext";
 import { USER_KEY, type UserLogin } from "@/hooks/useUser";
 import { useState } from "react";
 
