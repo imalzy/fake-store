@@ -2,6 +2,7 @@ import { Navigate, Route, Routes, Outlet } from "react-router-dom";
 import ProtectedRoute from "../components/ProtectedRoute";
 import Login from "../pages/Login";
 import Dashboard from "../pages/Dashboard";
+import UserPage from "../pages/UserPage";
 import NotFound from "../pages/NotFound";
 
 const AppRoutes = () => {
@@ -24,7 +25,7 @@ const AppRoutes = () => {
         <Route path="/products" element={<Dashboard />} /> {/* Placeholder */}
         <Route path="/categories" element={<Dashboard />} /> {/* Placeholder */}
         <Route path="/orders" element={<Dashboard />} /> {/* Placeholder */}
-        <Route path="/users" element={<Dashboard />} /> {/* Placeholder */}
+        <Route path="/users" element={<UserPage />} />
       </Route>
 
       {/* Catch all route */}
