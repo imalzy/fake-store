@@ -1,7 +1,7 @@
+import { useAuth } from "@/hooks/useAuth";
 import type { FC, ReactNode } from "react";
 import { Container, Nav, Navbar, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import { logout } from "../utils/auth";
 
 interface LayoutProps {
   children: ReactNode;
@@ -9,6 +9,7 @@ interface LayoutProps {
 
 const Layout: FC<LayoutProps> = ({ children }) => {
   const navigate = useNavigate();
+  const { logout } = useAuth();
 
   const handleLogout = () => {
     logout();
