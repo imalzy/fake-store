@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import { Navigate, useLocation } from "react-router-dom";
-import { isAuthenticated } from "../utils/auth";
 import MainLayout from "./layout/MainLayout";
+import { useAuth } from "@/hooks/useAuth";
 
 interface ProtectedRouteProps {
   children: ReactNode;
@@ -9,6 +9,7 @@ interface ProtectedRouteProps {
 
 const ProtectedRoute = ({ children }: ProtectedRouteProps) => {
   const location = useLocation();
+  const { isAuthenticated } = useAuth();
 
   if (!isAuthenticated()) {
     // Redirect to the login page if user is not authenticated

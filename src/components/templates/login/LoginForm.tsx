@@ -1,18 +1,24 @@
-import userService from "@/api/user-service";
-import Input from "@/components/ui/Input";
-import { useAppNavigation } from "@/hooks/useAppNavigation";
-import { login } from "@/utils/auth";
-import { zodResolver } from "@hookform/resolvers/zod";
 import React, { useState } from "react";
+
 import { Button, Form } from "react-bootstrap";
-import { Controller, useForm } from "react-hook-form";
+import Input from "@/components/ui/Input";
+
 import { FaLock, FaUser } from "react-icons/fa";
 import { toast, type ToastOptions } from "react-toastify";
+
+import { useAppNavigation } from "@/hooks/useAppNavigation";
+import { useAuth } from "@/hooks/useAuth";
+
+import { Controller, useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { loginSchema, type LoginType } from "./LoginSchema";
+
 
 const LoginForm = React.memo(() => {
   const [isLoading, setIsLoading] = useState(false);
   const { goTo, location } = useAppNavigation();
+
+  const { login } = useAuth();
 
   const { control, handleSubmit } = useForm({
     resolver: zodResolver(loginSchema),
@@ -35,19 +41,13 @@ const LoginForm = React.memo(() => {
       }
 
       try {
-        const resp = await userService.signin({
-          username: data?.username,
-          password: data?.password,
-        });
+        const result = await login(data?.username, data?.password);
 
-        if (resp) {
-          login(resp.token, data?.username);
-          toast.success("Login successful!");
+        if (result) {
+          const from = location.state?.from?.pathname || "/dashboard";
+          goTo(from, { replace: true });
+          setIsLoading(false);
         }
-
-        const from = location.state?.from?.pathname || "/dashboard";
-        goTo(from, { replace: true });
-        setIsLoading(false);
       } catch (error) {
         toast.error(
           "Login failed. Please try again.",
@@ -74,7 +74,7 @@ const LoginForm = React.memo(() => {
             type={"text"}
             placeholder={"Enter username"}
             disabled={isLoading}
-            errorMsg={error ? error.message : ""}
+            errormsg={error ? error.message : ""}
           />
         )}
       />
@@ -91,7 +91,7 @@ const LoginForm = React.memo(() => {
             type="password"
             placeholder={"Enter Password"}
             disabled={isLoading}
-            errorMsg={error ? error.message : ""}
+            errormsg={error ? error.message : ""}
           />
         )}
       />

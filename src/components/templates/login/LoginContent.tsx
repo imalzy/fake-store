@@ -1,21 +1,10 @@
-import { isAuthenticated } from "@/utils/auth";
-import React, { useEffect } from "react";
+import React from "react";
 import { Container, Row, Col, Card } from "react-bootstrap";
-import { useAppNavigation } from "@/hooks/useAppNavigation";
 
 import "react-toastify/dist/ReactToastify.css";
 import LoginForm from "./LoginForm";
 
 const LoginContent = React.memo(() => {
-const { goTo, location } = useAppNavigation();
-
-  useEffect(() => {
-    if (isAuthenticated()) {
-      const from = location.state?.from?.pathname || "/dashboard";
-      goTo(from, { replace: true });
-    }
-  }, [location, goTo]);
-
 
   return (
     <Container

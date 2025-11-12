@@ -8,7 +8,7 @@ type InputProps = {
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   placeholder: string;
   disabled: boolean;
-  errorMsg?: string;
+  errormsg?: string;
   required?: boolean;
   icon?: React.ReactNode;
   size?: "sm" | "lg";
@@ -26,9 +26,9 @@ const Input = React.memo((props: InputProps) => {
           </span>
         )}
         <Form.Control {...props} />
-        {props?.errorMsg && (
+        {props?.errormsg && (
           <Form.Control.Feedback type="invalid">
-            {props?.errorMsg}
+            {props?.errormsg}
           </Form.Control.Feedback>
         )}
       </div>
