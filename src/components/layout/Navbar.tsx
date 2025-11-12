@@ -2,7 +2,7 @@ import { Navbar as BootstrapNavbar, Nav, Dropdown } from "react-bootstrap";
 import { FaSignOutAlt, FaCog, FaShoppingCart } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
-import { useCart } from "@/context/CartContext";
+import { useCart } from "@/context/cartContext";
 
 interface NavbarProps {
   expanded: boolean;

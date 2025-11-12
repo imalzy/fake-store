@@ -1,5 +1,5 @@
 import type { Product } from "@/components/ui/ProductCard";
-import { CartContext, type CartItem } from "@/context/CartContext";
+import { CartContext, type CartItem } from "@/context/cartContext";
 import { useState, type ReactNode } from "react";
 import { toast } from "react-toastify";
 

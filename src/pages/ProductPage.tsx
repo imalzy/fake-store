@@ -1,6 +1,6 @@
 import type { Product } from "@/components/ui/ProductCard";
 import ProductCard from "@/components/ui/ProductCard";
-import { useCart } from "@/context/CartContext";
+import { useCart } from "@/context/cartContext";
 import { useUser } from "@/hooks/useUser";
 import React, { useEffect, useState } from "react";
 import { Container, Row, Col, Spinner, Button } from "react-bootstrap";
